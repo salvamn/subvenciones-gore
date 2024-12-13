@@ -19,6 +19,7 @@ class ModalFormularioRendicion extends Component
     public $monto_rendido;
     public $monto_aprobado;
     public $monto_observado;
+    public $proyecto_id = 1;
 
 
     protected $rules = [
@@ -30,6 +31,7 @@ class ModalFormularioRendicion extends Component
         'monto_rendido' => 'nullable|numeric',
         'monto_aprobado' => 'nullable|numeric',
         'monto_observado' => 'nullable|numeric',
+        'proyecto_id' => 'nullable|numeric',
     ];
 
 
@@ -60,8 +62,12 @@ class ModalFormularioRendicion extends Component
         // dd($validarData);
         // $this->formatear_numero($this->monto_rendido);
         $validarData = $this->validate();
+        Log::info($validarData);
         Rendicion::create($validarData);
         session(['data' => $validarData]);
+
+        // Emitir un evento para actualizar la tabla
+        $this->emit('rendicionAgregada');
         // $this->resetForm();
         // Log::info(json_encode($validarData));
 

@@ -44,7 +44,7 @@
                                         <label class="font-bold" for="monto-aprobado">Monto aprobado</label>
                                         <input
                                             class="w-1/2 rounded-lg outline-none focus:ring-2 focus:ring-sky-200 p-2 border border-gray-200"
-                                            type="number" name="monto-aprobado" placeholder="1000000"
+                                            type="number" name="monto_aprobado" placeholder="1000000"
                                             wire:model="monto_aprobado">
                                             @error('monto_aprobado') <span class="text-red-500">{{ $message }}</span> @enderror
                                     </div>
@@ -83,10 +83,16 @@
                                     </div>
 
                                     <div class="w-full flex flex-row items-center justify-between">
+                                        <label class="font-bold" for="proyecto_id">Proyecto ID</label>
+                                        <input type="number" placeholder="1" disabled class="w-1/2 rounded-lg outline-none focus:ring-2 focus:ring-sky-200 p-2 border text-gray-500 border-gray-200" name="proyecto_id" wire:model='proyecto_id' value="1">
+                                    </div>
+
+                                    <div class="w-full flex flex-row items-center justify-between">
                                         <label class="font-bold" for="correo">Adjuntar</label>
                                         <input class="w-1/2 rounded-lg p-2" type="file" name="correo"
                                             id="">
                                     </div>
+
 
                                     <div class="w-full flex flex-row items-center justify-end py-3 space-x-4">
                                         <button

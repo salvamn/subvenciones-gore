@@ -9,25 +9,25 @@ class Rendicion extends Model
 {
     use HasFactory;
 
+    // Especificar el nombre de la tabla si es diferente del plural del modelo
+    protected $table = 'rendiciones';
+
+    // Definir los campos que pueden ser asignados masivamente
     protected $fillable = [
         'numero_de_rendicion',
-        'analista',
         'fecha_de_ingreso',
         'fecha_de_cierre',
         'dias',
         'monto_rendido',
         'monto_aprobado',
         'monto_observado',
+        'analista',
+        'proyecto_id', // Este es el campo que conecta la rendición con el proyecto
     ];
 
-    public static $rules = [
-        'numero_de_rendicion' => 'nullable|numeric',
-        'analista' => 'nullable|string|max:255',
-        'fecha_de_ingreso' => 'nullable|date',
-        'fecha_de_cierre' => 'nullable|date',
-        'dias' => 'nullable|integer',
-        'monto_rendido' => 'nullable|numeric',
-        'monto_aprobado' => 'nullable|numeric',
-        'monto_observado' => 'nullable|numeric',
-    ];
+    // Relación: Una rendición pertenece a un proyecto
+    public function proyecto()
+    {
+        return $this->belongsTo(Proyecto::class); // Relación inversa
+    }
 }

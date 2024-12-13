@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+//   prefix: 'tw-',
   purge: [
     './resources/views/**/*.blade.php',
     './resources/css/**/*.css',

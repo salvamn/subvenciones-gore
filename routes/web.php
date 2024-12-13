@@ -19,3 +19,8 @@ Route::get('/', function () {
 
 
 Route::post('/submit-rendicion', [ModalFormularioRendicion::class,'submit'])->name('rendicion.submit');
+
+
+Route::get('/pdf', function(){
+    return view('livewire/p-d-freporte');
+});
