@@ -120,8 +120,8 @@
         <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; border-radius: 10px">
             <thead>
                 <tr>
-                    <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">analista</th>
                     <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">n° rendición</th>
+                    <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">analista</th>
                     <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">fecha de ingreso</th>
                     <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">fecha de cierre</th>
                     <th style="padding: 8px; text-align: left; background-color: #f7f7f7; font-weight: bold; border: 1px solid #ddd;">días</th>
