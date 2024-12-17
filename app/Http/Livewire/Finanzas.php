@@ -12,63 +12,65 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class Finanzas extends Component
 {
     public $proyecto;
+    public $rendiciones;
     public $rendicionesTotales;
     public $montoFaltante;
 
+    public $datos;
+
+    // animacion
+    public $cargando = false;
 
     public function mount()
     {
 
         $this->proyecto = Proyecto::find(1);
+        $this->rendiciones = Rendicion::all();
         $this->rendicionesTotales = Rendicion::sum('monto_rendido');
 
         $restaMontoYRendiciones = $this->proyecto->monto - $this->rendicionesTotales;
         $this->montoFaltante = $restaMontoYRendiciones;
 
         // $this->$montoFaltante
-        Log::info($restaMontoYRendiciones);
+        // Log::info($restaMontoYRendiciones);
+        // Log::info($this->rendiciones);
         // $sumaRendiciones = 
-
-
-
-
     }
-
-
-    // public function generatePDF()
-    // {
-    //     // Datos para pasar a la vista
-    //     // $data = [
-    //     //     'title' => 'Reporte de Rendición',
-    //     //     'content' => 'Este es el contenido de nuestro reporte.',
-    //     // ];
-
-    //     // Cargar la vista HTML para el PDF
-    //     // $pdf = Pdf::loadView('livewire/p-d-freporte', $data);
-
-    //     // Retornar el PDF como respuesta (esto descarga el archivo)
-    //     // return $pdf->download('reporte_rendicion.pdf');
-    //     $pdf = Pdf::loadView('livewire/p-d-freporte');
-    //     return $pdf->download('reporte_rendicion.pdf');
-    // }
 
 
     public function generarPdf()
     {
-        $datos = [
-            'titulo' => 'Reporte de Ventas',
-            'ventas' => [
-                ['producto' => 'Producto 1', 'cantidad' => 10, 'precio' => 100],
-                ['producto' => 'Producto 2', 'cantidad' => 20, 'precio' => 200],
-            ],
+        $this->cargando = true;
+        set_time_limit(120);
+
+        $logoUrl = public_path('images/gorelogo.jpg');
+
+        $this->datos = [
+            'titulo' => 'U de Chile',
+            'descripcion' => 'Lo mas grande',
+            'proyecto' => $this->proyecto,
+            'rendiciones' => $this->rendiciones,
+            'montoFaltante' => $this->montoFaltante,
+            'logo' => $logoUrl,
+            // 'imagePath' => public_path('img/ulogo.png'),
         ];
 
-        // Cargar la vista de Blade con los datos y generar el PDF
-        $pdf = PDF::loadView('livewire.p-d-freporte', $datos);
+        Log::info('boton clickeado');
 
-        // Descargar el PDF
-        // return $pdf->download('reporte.pdf');
-        return $pdf->stream('prueba.pdf');
+        // información util
+        // https://stackoverflow.com/questions/66082553/dompdf-not-downloading-pdf-from-laravel-8-and-a-livewire-view
+        // https://stackoverflow.com/questions/77037520/laravel-livewire-and-dompdf
+        // PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);->
+        // https://stackoverflow.com/questions/45690599/laravel-dompdf-error-image-not-found-or-type-unknown
+
+        $pdfContent = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pruebaPdf', ['datos'=>$this->datos])->output();
+        $this->cargando = false; // Desactivar animación de carga
+        return response()->streamDownload(
+             fn () => print($pdfContent),
+             "prueba.pdf"
+        );
+
+
     }
 
 

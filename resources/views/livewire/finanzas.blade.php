@@ -17,10 +17,16 @@
 
 		<div class="w-auto h-auto flex flex-row items-center justify-center space-x-2">
 			<button class="bg-red-100 rounded shadow p-[2px] border border-red-200 active:scale-90 select-none hover:bg-red-200" 
-			wire:click="generarPDF()">
+			wire:click="generarPdf()"
+			{{-- wire:loading.attr="disabled" --}}
+			{{-- wire:target="generarPdf"> --}}>
 				{{-- <span class="animate-ping absolute justify-end w-2 h-2 rounded-full bg-sky-400 opacity-75"></span> --}}
+				    {{-- Animación de cargando cuando la variable $cargando es true --}}
+				{{-- Animación de cargando cuando la variable $cargando es true --}}
+
 				<img src="https://img.icons8.com/?size=100&id=13417&format=png&color=000000" width="25px">
 			</button>
+			
 			<button class="bg-green-100 rounded shadow p-[2px] border border-green-200 active:scale-90 select-none hover:bg-green-200">
 				<img src="https://img.icons8.com/?size=100&id=13654&format=png&color=000000" width="25px">
 			</button>

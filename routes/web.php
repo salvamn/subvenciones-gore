@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ModalFormularioRendicion;
+use App\Http\Controllers\PruebaPdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::post('/submit-rendicion', [ModalFormularioRendicion::class,'submit'])->name('rendicion.submit');
 
 
-Route::get('/pdf', function(){
-    return view('livewire/p-d-freporte');
-});
+Route::get('/pdf', [PruebaPdfController::class, 'submit'])->name('pdf.submit');
+
+// Route::get('/pdf', function(){
+//     return view('pruebaPdf');
+// });

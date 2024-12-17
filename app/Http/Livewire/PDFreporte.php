@@ -3,7 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Barryvdh\DomPDF\Facade\Pdf;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use PDF;
 
 class PDFreporte extends Component
 {
@@ -27,8 +28,8 @@ class PDFreporte extends Component
 
         // Retornar el PDF como respuesta (esto descarga el archivo)
         // return $pdf->download('reporte_rendicion.pdf');
-        $pdf = Pdf::loadView('livewire/p-d-freporte');
-        return $pdf->download('reporte_rendicion.pdf');
+        // $pdf = Pdf::loadView('livewire/p-d-freporte');
+        // return $pdf->download('reporte_rendicion.pdf');
     }
 
     // public function render()
