@@ -1,9 +1,5 @@
-
-
 <div class="w-full h-[90%] flex flex-col rounded-xl border">
 	{{-- Be like water. --}}
-
-
 
 
 	{{-- card header --}}
@@ -17,13 +13,7 @@
 
 		<div class="w-auto h-auto flex flex-row items-center justify-center space-x-2">
 			<button class="bg-red-100 rounded shadow p-[2px] border border-red-200 active:scale-90 select-none hover:bg-red-200" 
-			wire:click="generarPdf()"
-			{{-- wire:loading.attr="disabled" --}}
-			{{-- wire:target="generarPdf"> --}}>
-				{{-- <span class="animate-ping absolute justify-end w-2 h-2 rounded-full bg-sky-400 opacity-75"></span> --}}
-				    {{-- Animación de cargando cuando la variable $cargando es true --}}
-				{{-- Animación de cargando cuando la variable $cargando es true --}}
-
+			wire:click="generarPdf()">
 				<img src="https://img.icons8.com/?size=100&id=13417&format=png&color=000000" width="25px">
 			</button>
 			
@@ -93,8 +83,6 @@
 	{{-- card información --}}
 
 	{{-- card rendiciones --}}
-
-
 	<div class="w-full h-auto border-b-[1px] pt-6 pb-6 pl-4 pr-4 space-y-6">
 		<section class="py-1">
 			<div class="w-full">
@@ -122,75 +110,8 @@
 	<div class="w-full p-2 h-auto text-center flex flex-col">
 		<span class="text-xs text-gray-600 font-light tracking-wide underline decoration-sky-200">unidad de
 			subvenciones</span>
-
 	</div>
 
 	{{-- card rendiciones --}}
-
-
-
-
-
-
-	<script type="module">
-		function alerta(titulo, texto, icono, html = null) {
-            Swal.fire({
-                title: titulo,
-                text: texto,
-                icon: icono,
-                html: html,
-            })
-        }
-
-        function cerrarModal(idModal) {
-            var referencia = document.getElementById(idModal)
-            if (referencia.style.display === 'none') {
-                referencia.style.display = 'flex'
-            } else if (referencia.style.display === 'flex') {
-                referencia.style.display = 'none'
-            }
-        }
-
-
-        // boton corregir monto (dentro de la tabla de rendiciones)
-        const refCorregirMontoRendicion = document.getElementById('corregir-monto-rendicion')
-        refCorregirMontoRendicion.addEventListener('click', function() {
-            const {
-                value: formValues
-            } = Swal.fire({
-                html: `
-                    <div class="flex flex-row items-center justify-between mb-2 mt-4">
-                        <label for="monto-rendido" class="text-base font-bold uppercase">monto rendido: </label>
-                        <input id="monto-rendido" class="p-2 w-1/2 border rounded text-black bg-[#e9ecef] outline-none" placeholder='3899902' disabled>
-                    </div>
-                    <div class="flex flex-row items-center justify-between mb-2">
-                        <label for="monto-rendido uppercase" class="text-base font-bold uppercase">nuevo monto rendido: </label>
-                        <input id="swal-input2" class="p-2 border w-1/2 rounded text-black  outline-none">
-                    </div>
-                    <div class="flex flex-row items-center justify-between mb-2">
-                        <label for="monto-rendido" class="text-base font-bold uppercase">observación: </label>
-                        <input id="swal-input2" class="p-2 border w-1/2 rounded text-black  outline-none">
-                    </div>
-                    <div class="flex flex-row items-center justify-between mb-2">
-                        <label for="monto-rendido" class="text-base font-bold uppercase">adjuntar correción de monto: </label>
-                        <input type="file" id="swal-input2" class="p-2 border w-1/2 rounded text-black outline-none">
-                    </div>
-                `,
-                width: '650px',
-                focusConfirm: false,
-                // preConfirm: () => {
-                //     return [
-                //         document.getElementById("swal-input1").value,
-                //         document.getElementById("swal-input2").value
-                //     ];
-                // }
-            });
-            if (formValues) {
-                Swal.fire(JSON.stringify(formValues));
-            }
-        })
-	</script>
-
-
 
 </div>
