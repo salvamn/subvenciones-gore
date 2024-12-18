@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Log;
 use Barryvdh\DomPDF\Facade\Pdf;
 // use Barryvdh\DomPDF\Facade as PDF;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Finanzas extends Component
 {
     public $proyecto;

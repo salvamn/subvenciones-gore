@@ -41,7 +41,7 @@
                     <span>Gobierno Regional del Biobío - Avenida Prat 525 - Mesa Central 56-41-2405700 - Concepción, Región del Biobío, Chile.</span>
                 </div>
                 
-                <script src="https://cdn.tailwindcss.com"></script>
+                {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
                 <script src="//unpkg.com/alpinejs" defer></script>
             </div>
         </div>
