@@ -17,7 +17,7 @@
 				<img src="https://img.icons8.com/?size=100&id=13417&format=png&color=000000" width="25px">
 			</button>
 			
-			<button class="bg-green-100 rounded shadow p-[2px] border border-green-200 active:scale-90 select-none hover:bg-green-200">
+			<button class="bg-green-100 rounded shadow p-[2px] border border-green-200 active:scale-90 select-none hover:bg-green-200" wire:click="export">
 				<img src="https://img.icons8.com/?size=100&id=13654&format=png&color=000000" width="25px">
 			</button>
 		</div>
